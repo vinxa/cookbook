@@ -23,24 +23,39 @@ jobs:
           cook --version
       
       - name: Convert recipes to markdown
+        shell: bash
         run: |
+          set -euo pipefail
           mkdir -p _recipes_generated
           rm -f _recipes_generated/*.md
           shopt -s globstar nullglob
           for recipe in recipes/**/*.cook; do
             [ -f "$recipe" ] || continue
-            name=$(basename "$recipe" .cook)
+            name="$(basename "$recipe" .cook)"
             out="_recipes_generated/$name.md"
-            servings=$(grep -E '^---' -A2 "$recipe" | grep servings | cut -d':' -f2 | xargs || echo "")
+            servings="$(awk 'f{print; if (/^---$/){exit}} /^---$/{f=1}' "$recipe" \
+                      | awk -F: '/^servings:/ {gsub(/^[[:space:]]+|[[:space:]]+$/,"",$2); print $2; exit}' || true)"
             {
-              echo "---"
-              echo "layout: recipe"
-              [ -n "$servings" ] && echo "servings: $servings"
+              echo '---'
+              echo 'layout: recipe'
+              [ -n "${servings:-}" ] && echo "servings: $servings"
               echo "title: ${name//_/ }"
-              echo "---"
-              cook recipe -f markdown "$recipe"
+              echo '---'
+
+              cook recipe -f markdown "$recipe" \
+              | awk 'BEGIN{fm=0}
+                    NR==1 && $0=="---"{fm=1; next}
+                    fm==1 && $0=="---"{fm=2; next}
+                    fm==1 {next}
+                    {print}' \
+              | awk 'NR==1 && $0 ~ /^# / {next} {print}'
             } > "$out"
+
+            echo "Wrote $out"
           done
+
+          echo '--- Debug sample ---'
+          head -n 40 _recipes_generated/*.md || true
 
       - name: Commit generated markdown
         uses: EndBug/add-and-commit@v9
