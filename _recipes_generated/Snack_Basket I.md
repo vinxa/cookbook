@@ -3,10 +3,6 @@ layout: recipe
 servings: 8
 title: Snack Basket I
 ---
----
-servings: 8
-name: Snack_Basket I
----
 
 # Snack_Basket I
 

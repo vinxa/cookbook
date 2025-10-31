@@ -3,11 +3,6 @@ layout: recipe
 servings: 6
 title: Neapolitan Pizza
 ---
----
-servings: 6
-source: https://www.stadlermade.com/how-to-pizza-dough/neapolitan/
-name: Neapolitan_Pizza
----
 
 # Neapolitan_Pizza
 
@@ -42,7 +37,7 @@ towards the outer edges so that the air goes to the crust. Rotate the dough
 clockwise and make the same movement again until you have gone all around and a
 nice crust has formed. Now lift the dough and place it on top of your knuckles.
 Gently stretch the dough and rotate, making circular movements to stretch it
-into a pizza base of about 25cm.
+into a pizza base of approx 25cm.
 
 5. Place the base on a lightly floured surface and spread San Marzano tomato
 sauce on it. Add some fresh basil leaves and fresh mozzarella cheese.

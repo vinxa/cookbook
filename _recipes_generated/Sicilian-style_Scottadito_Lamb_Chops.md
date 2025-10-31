@@ -3,11 +3,6 @@ layout: recipe
 servings: 4
 title: Sicilian-style Scottadito Lamb Chops
 ---
----
-servings: 4
-author: Jamie Oliver
-name: Sicilian-style_Scottadito_Lamb_Chops
----
 
 # Sicilian-style_Scottadito_Lamb_Chops
 
