@@ -1,25 +1,22 @@
 ---
+template: default
 ---
 
-{%- assign normalised = page.content
-  | replace: "##  ", "## "
-  | replace: "\r\n", "\n"
-  | replace: "\r", "\n"
--%}
+{%- assign raw_content = page.content -%}
 
-{%- assign split_by_steps = normalised | split: "\n## Steps" -%}
+{%- assign split_by_steps = raw_content | split: '<h2 id="steps">' -%}
 {%- assign before_steps = split_by_steps[0] -%}
-{%- assign steps_section = split_by_steps[1] | default: "" -%}
+{%- assign steps_section = split_by_steps[1] | default: '' -%}
 
-{%- assign split_by_cookware = before_steps | split: "\n## Cookware" -%}
+{%- assign split_by_cookware = before_steps | split: '<h2 id="cookware">' -%}
 {%- assign before_cookware = split_by_cookware[0] -%}
-{%- assign cookware_section = split_by_cookware[1] | default: "" -%}
+{%- assign cookware_section = split_by_cookware[1] | default: '' -%}
 
-{%- assign split_by_ingredients = before_cookware | split: "\n## Ingredients" -%}
+{%- assign split_by_ingredients = before_cookware | split: '<h2 id="ingredients">' -%}
 {%- assign header_section = split_by_ingredients[0] -%}
-{%- assign ingredients_section = split_by_ingredients[1] | default: "" -%}
+{%- assign ingredients_section = split_by_ingredients[1] | default: '' -%}
 
-<pre style="white-space: pre-wrap; background:#222; color:#0f0; padding:1rem;">
+<!-- <pre style="white-space: pre-wrap; background:#222; color:#0f0; padding:1rem;">
 RAW CONTENT:
 {{ page.content | escape }}
 
@@ -34,7 +31,7 @@ INGREDIENTS SECTION:
 
 STEPS SECTION:
 {{ steps_section | escape }}
-</pre>
+</pre> -->
 
 
 
