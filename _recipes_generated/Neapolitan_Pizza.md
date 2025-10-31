@@ -19,7 +19,7 @@ the dough box and place it upside down in the @flour. Sprinkle the
 bottom of the dough ball generously with @semolina, then
 flip it over again so that the top remains the top.
 
-Press with your fingertips from both hands in the center of the
+Press with your fingertips from both hands into the center of the
 dough ball towards the outer edges so that the air goes to the
 crust. Rotate the dough clockwise and make the same movement again
 until you have gone all around and a nice crust has formed. Now
