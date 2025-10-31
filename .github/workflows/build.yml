@@ -30,16 +30,16 @@ jobs:
           for recipe in recipes/**/*.cook; do
             [ -f "$recipe" ] || continue
             name=$(basename "$recipe" .cook)
-            cook recipe -f markdown "$recipe" > "_recipes_generated/$name.md"
+            out="_recipes_generated/$name.md"
             servings=$(grep -E '^---' -A2 "$recipe" | grep servings | cut -d':' -f2 | xargs || echo "")
-          {
-          echo "---"
-          echo "layout: recipe"
-          [ -n "$servings" ] && echo "servings: $servings"
-          echo "title: ${name//_/ }"
-          echo "---"
-          cook recipe -f markdown "$recipe"
-          } > "$out"
+            {
+              echo "---"
+              echo "layout: recipe"
+              [ -n "$servings" ] && echo "servings: $servings"
+              echo "title: ${name//_/ }"
+              echo "---"
+              cook recipe -f markdown "$recipe"
+            } > "$out"
           done
 
       - name: Commit generated markdown
