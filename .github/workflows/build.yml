@@ -15,23 +15,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate Markdown from .cook files
+      - name: Install CookCLI
+        run: |
+          curl -L https://github.com/cooklang/cookcli/releases/latest/download/cook-linux-amd64 -o cook
+          chmod +x cook
+          sudo mv cook /usr/local/bin/
+      
+      - name: Convert recipes to markdown
         run: |
           mkdir -p _recipes_generated
           rm -f _recipes_generated/*.md
-          find recipes -type f -name '*.cook' | while read -r f; do
-            name=$(basename "$f" .cook)
-            out="_recipes_generated/$name.md"
-            {
-              echo "---"
-              echo "layout: recipe"
-              echo "title: ${name//_/ }"
-              echo "---"
-              echo ""
-              echo '```cooklang'
-              cat "$f"
-              echo '```'
-            } > "$out"
+          shopt -s globstar nullglob
+          for recipe in recipes/**/*.cook; do
+            [ -f "$recipe" ] || continue
+            name=$(basename "$recipe" .cook)
+            cook recipe -f markdown "$recipe" > "_recipes_generated/$name.md"
           done
 
       - name: Commit generated markdown
@@ -40,5 +38,5 @@ jobs:
           author_name: github-actions
           author_email: vinxa@github.com
           message: Auto-generate markdown recipes
-          add: '_recipes_generated/* --force'
+          add: '_recipes_generated/*.md --force'
           pathspec_error_handling: ignore
