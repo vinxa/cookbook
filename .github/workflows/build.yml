@@ -31,6 +31,7 @@ jobs:
             [ -f "$recipe" ] || continue
             name=$(basename "$recipe" .cook)
             cook recipe -f markdown "$recipe" > "_recipes_generated/$name.md"
+            servings=$(grep -E '^---' -A2 "$recipe" | grep servings | cut -d':' -f2 | xargs || echo "")
           done
 
       - name: Commit generated markdown
