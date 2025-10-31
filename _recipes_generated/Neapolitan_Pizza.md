@@ -1,34 +1,52 @@
 ---
-layout: recipe
-title: Neapolitan Pizza
----
-
-```cooklang
----
 servings: 6
 source: https://www.stadlermade.com/how-to-pizza-dough/neapolitan/
+name: Neapolitan_Pizza
 ---
 
-Preheat your #outdoor oven{} so it’s around 450/500°C (842/932°F).
+# Neapolitan_Pizza
 
-Prepare your pizza toppings, because from now on you will work
-fast. Sprinkle some @semolina on your work surface.
+## Ingredients
 
-Use a #spatula to remove the @./Shared/Pizza Dough{6%balls} from
-the dough box and place it upside down in the @flour. Sprinkle the
-bottom of the dough ball generously with @semolina, then
-flip it over again so that the top remains the top.
+- semolina
+- *6 balls* [Pizza Dough](Shared/Pizza Dough)
+- flour
+- semolina
+- *5 tbsp* San Marzano tomato sauce
+- basil leaves
+- *100 grams* mozzarella cheese
 
-Press with your fingertips from both hands into the center of the
-dough ball towards the outer edges so that the air goes to the
-crust. Rotate the dough clockwise and make the same movement again
-until you have gone all around and a nice crust has formed. Now
-lift the dough and place it on top of your knuckles. Gently stretch
-the dough and rotate, making circular movements to stretch it into
-a pizza base of about 25cm.
+## Cookware
 
-Place the base on a lightly floured surface and spread @San Marzano tomato sauce{5%tbsp} on it. Add some fresh @basil leaves{} and fresh @mozzarella cheese{100%grams}.
+- outdoor oven
+- spatula
 
-Spike up your fire by standing up some small logs of wood against the back panel, this will generate lots of heat and the fire will go up and over the pizza.  Sprinkle some flour on your pizza peel and slide the pizza onto it. 
-Use your peel to slide the pizza into your oven and bake the pizza at 450/500°C (842/932°F). Watch out; this can go fast. Rotate the pizza every couple of seconds to prevent burning. After 60 to 90 seconds, your pizza is done. Slice your pizza and enjoy!
-```
+## Steps
+
+1. Preheat your outdoor oven so it’s around 450/500°C (842/932°F).
+
+2. Prepare your pizza toppings, because from now on you will work fast. Sprinkle
+some semolina on your work surface.
+
+3. Use a spatula to remove the Pizza Dough from the dough box and place it
+upside down in the flour. Sprinkle the bottom of the dough ball generously with
+semolina, then flip it over again so that the top remains the top.
+
+4. Press with your fingertips from both hands into the center of the dough ball
+towards the outer edges so that the air goes to the crust. Rotate the dough
+clockwise and make the same movement again until you have gone all around and a
+nice crust has formed. Now lift the dough and place it on top of your knuckles.
+Gently stretch the dough and rotate, making circular movements to stretch it
+into a pizza base of about 25cm.
+
+5. Place the base on a lightly floured surface and spread San Marzano tomato
+sauce on it. Add some fresh basil leaves and fresh mozzarella cheese.
+
+6. Spike up your fire by standing up some small logs of wood against the back
+panel, this will generate lots of heat and the fire will go up and over the
+pizza.  Sprinkle some flour on your pizza peel and slide the pizza onto it.  Use
+your peel to slide the pizza into your oven and bake the pizza at 450/500°C
+(842/932°F). Watch out; this can go fast. Rotate the pizza every couple of
+seconds to prevent burning. After 60 to 90 seconds, your pizza is done. Slice
+your pizza and enjoy!
+
