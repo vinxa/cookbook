@@ -41,3 +41,4 @@ jobs:
           author_email: vinxa@github.com
           message: Auto-generate markdown recipes
           add: '_recipes_generated/*'
+          force: true
