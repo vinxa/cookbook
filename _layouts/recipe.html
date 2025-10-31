@@ -1,0 +1,8 @@
+---
+layout: default
+---
+
+<h1>{{ page.name | replace: '.cook', '' }}</h1>
+<pre style="background:#f8f8f8; padding:1em; border-radius:8px;">
+{% include_relative {{ page.path }} %}
+</pre>

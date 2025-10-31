@@ -1,0 +1,12 @@
+title: Gabby’s Cookbook
+description: CookLang recipes
+theme: minima
+markdown: kramdown
+collections:
+  recipes:
+    output: true
+defaults:
+  - scope:
+      path: "recipes"
+    values:
+      layout: recipe
