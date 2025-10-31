@@ -9,7 +9,7 @@ A collection of recipes written in [CookLang](https://cooklang.org) :)
 
 ## Recipes
 <ul>
-{% for recipe in site.recipes %}
+{% for recipe in site.recipes_generated %}
   <li><a href="{{ recipe.url | relative_url }}">{{ recipe.title }}</a></li>
 {% endfor %}
 </ul>

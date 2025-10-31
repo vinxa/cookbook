@@ -3,7 +3,7 @@ description: CookLang recipes
 theme: minima
 markdown: kramdown
 collections:
-  recipes:
+  recipes_generated:
     output: true
 defaults:
   - scope:
