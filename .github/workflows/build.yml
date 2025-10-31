@@ -15,14 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install CookCLI
+      - name: Install CookCLI via Cargo
         run: |
-          curl -sL https://github.com/cooklang/cookcli/releases/latest \
-            | grep -Eo 'https://github.com/cooklang/cookcli/releases/download/[^"]*cook-x86_64-unknown-linux-gnu' \
-            | head -n 1 \
-            | xargs -n 1 curl -L -o cook
-          chmod +x cook
-          sudo mv cook /usr/local/bin/cook
+          sudo apt-get update && sudo apt-get install -y cargo
+          cargo install cooklang-cli
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
       
       - name: Convert recipes to markdown
         run: |
