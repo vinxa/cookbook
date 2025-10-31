@@ -40,5 +40,5 @@ jobs:
           author_name: github-actions
           author_email: vinxa@github.com
           message: Auto-generate markdown recipes
-          add: '_recipes_generated/*'
-          force: true
+          add: '_recipes_generated/* --force'
+          pathspec_error_handling: ignore
