@@ -2,6 +2,19 @@
 layout: default
 ---
 
+{% assign parts = content | split: "## Cookware" %}
+{% if parts.size > 1 %}
+  {% assign before_cookware = parts[0] %}
+  {% assign after_cookware = parts[1] | split: "## Steps" %}
+  {% assign cookware_section = after_cookware[0] %}
+  {% assign steps_section = after_cookware[1] %}
+{% else %}
+  {% assign before_cookware = content | split: "## Steps" | first %}
+  {% assign cookware_section = "" %}
+  {% assign steps_section = content | split: "## Steps" | last %}
+{% endif %}
+
+
 <style>
 .recipe-card {
   max-width: 700px;
@@ -67,26 +80,28 @@ layout: default
 
 <article class="recipe-card">
   <div class="recipe-header">
-    <h1>{{ page.title }}</h1>
+    <h1>{{ page.title | replace: '_', ' ' }}</h1>
     <div class="recipe-meta">
       {% if page.servings %}👥 {{ page.servings }} servings{% endif %}
       {% if page.author %} • 👤 {{ page.author }}{% endif %}
+      {% if page.source %} • 📕 <a href="{{ page.source }}">{{ page.source | replace: 'https://', '' | replace: 'http://', '' }}</a>{% endif %}
     </div>
   </div>
 
-  <div class="recipe-sections">
-    <div class="recipe-section">
-      <h2>🥘 Ingredients</h2>
-      {{ content | split:'## Cookware' | first | markdownify }}
-    </div>
-    <div class="recipe-section">
-      <h2>🍳 Cookware</h2>
-      {{ content | split:'## Cookware' | last | markdownify }}
-    </div>
+<div class="recipe-sections">
+  <div class="recipe-section">
+    <h2>🥘 Ingredients</h2>
+    {{ before_cookware | markdownify }}
   </div>
+  <div class="recipe-section">
+    <h2>🍳 Cookware</h2>
+    {{ cookware_section | markdownify }}
+  </div>
+</div>
 
-  <div class="recipe-steps">
-    <h2>👩‍🍳 Instructions</h2>
-    {{ content | markdownify }}
-  </div>
+<div class="recipe-steps">
+  <h2>👩‍🍳 Instructions</h2>
+  {{ steps_section | markdownify }}
+</div>
+
 </article>
