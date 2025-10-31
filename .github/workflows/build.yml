@@ -1,19 +1,17 @@
-name: Generate recipes for GitHub Pages
+name: Generate recipe .md files
 
 on:
   push:
     branches: [main]
     paths:
       - "recipes/**/*.cook"
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -36,9 +34,10 @@ jobs:
             } > "$out"
           done
 
-      - name: Commit and push
-        run: |
-          git config user.name "GitHub Action"
-          git config user.email "actions@github.com"
-          git add _recipes_generated
-          git diff --cached --quiet || (git commit -m "Auto-generate markdown recipes" && git push)
+      - name: Commit generated markdown
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github-actions
+          author_email: vinxa@github.com
+          message: Auto-generate markdown recipes
+          add: '_recipes_generated/*'
