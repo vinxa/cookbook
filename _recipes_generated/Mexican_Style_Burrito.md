@@ -1,4 +1,9 @@
 ---
+layout: recipe
+servings: 6
+title: Mexican Style Burrito
+---
+---
 servings: 6
 author: Jamie Oliver
 name: Mexican_Style_Burrito

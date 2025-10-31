@@ -1,4 +1,9 @@
 ---
+layout: recipe
+servings: 2
+title: Easy Pancakes
+---
+---
 servings: 2
 tags: breakfast
 name: Easy_Pancakes

@@ -1,4 +1,9 @@
 ---
+layout: recipe
+servings: 6
+title: Neapolitan Pizza
+---
+---
 servings: 6
 source: https://www.stadlermade.com/how-to-pizza-dough/neapolitan/
 name: Neapolitan_Pizza
