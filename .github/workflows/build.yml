@@ -17,9 +17,12 @@ jobs:
 
       - name: Install CookCLI
         run: |
-          curl -L https://github.com/cooklang/cookcli/releases/latest/download/cook-linux-amd64 -o cook
+          curl -sL https://github.com/cooklang/cookcli/releases/latest \
+            | grep -Eo 'https://github.com/cooklang/cookcli/releases/download/[^"]*cook-x86_64-unknown-linux-gnu' \
+            | head -n 1 \
+            | xargs -n 1 curl -L -o cook
           chmod +x cook
-          sudo mv cook /usr/local/bin/
+          sudo mv cook /usr/local/bin/cook
       
       - name: Convert recipes to markdown
         run: |
