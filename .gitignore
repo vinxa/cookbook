@@ -2,3 +2,5 @@ config/
 db/
 reports/
 Shared/
+.obsidian
+.DS_STORE
