@@ -1,0 +1,15 @@
+services:
+  cookcli:
+    container_name: cookcli
+    deploy:
+      resources:
+        limits:
+          cpus: 0.10
+          memory: 32M
+    image: inigochoa/cookcli:latest
+    ports:
+      - 127.0.0.1:9283:9080
+    restart: unless-stopped
+    volumes:
+      - ./recipes:/recipes
+
