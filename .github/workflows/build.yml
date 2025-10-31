@@ -17,9 +17,10 @@ jobs:
 
       - name: Install CookCLI via Cargo
         run: |
-          sudo apt-get update && sudo apt-get install -y cargo
-          cargo install cooklang-cli
-          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+          wget -q https://github.com/cooklang/cookcli/releases/latest/download/cook-x86_64-unknown-linux-gnu.tar.gz
+          tar -xzf cook-x86_64-unknown-linux-gnu.tar.gz
+          sudo mv cook /usr/local/bin/
+          cook --version
       
       - name: Convert recipes to markdown
         run: |
