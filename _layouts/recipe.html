@@ -2,11 +2,16 @@
 layout: default
 ---
 
-{% assign raw = page.content %}
-{% assign parts = raw | split: "## Steps" %}
-{% assign before_steps = parts[0] %}
-{% assign steps_section = parts[1] %}
-
+{%- assign raw_content = page.content -%}
+{%- assign split_by_steps = raw_content | split: "## Steps" -%}
+{%- assign before_steps = split_by_steps[0] -%}
+{%- assign steps_section = split_by_steps[1] -%}
+{%- assign split_by_cookware = before_steps | split: "## Cookware" -%}
+{%- assign before_cookware = split_by_cookware[0] -%}
+{%- assign cookware_section = split_by_cookware[1] -%}
+{%- assign split_by_ingredients = before_cookware | split: "## Ingredients" -%}
+{%- assign header_section = split_by_ingredients[0] -%}
+{%- assign ingredients_section = split_by_ingredients[1] -%}
 
 
 <style>
@@ -78,15 +83,24 @@ layout: default
     <div class="recipe-meta">
       {% if page.servings %}👥 {{ page.servings }} servings{% endif %}
       {% if page.author %} • 👤 {{ page.author }}{% endif %}
-      {% if page.source %} • 📕 <a href="{{ page.source }}">{{ page.source | replace: 'https://', '' | replace: 'http://', '' }}</a>{% endif %}
+      {% if page.source %} • 📕 <a href="{{ page.source }}">Source</a>{% endif %}
     </div>
   </div>
 
   <div class="recipe-sections">
+    {%- if ingredients_section -%}
     <div class="recipe-section">
-    <h2>🥘 Ingredients</h2>
-    {{ before_steps | markdownify }}
+      <h2>🥘 Ingredients</h2>
+      {{ ingredients_section | markdownify }}
     </div>
+    {%- endif -%}
+    
+    {%- if cookware_section -%}
+    <div class="recipe-section">
+      <h2>🧰 Cookware</h2>
+      {{ cookware_section | markdownify }}
+    </div>
+    {%- endif -%}
 
     <div class="recipe-steps">
     <h2>👩‍🍳 Instructions</h2>
