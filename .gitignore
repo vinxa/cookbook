@@ -4,4 +4,4 @@ reports/
 .obsidian
 .DS_STORE
 _site/
-_recipes/generated
+_recipes_generated
