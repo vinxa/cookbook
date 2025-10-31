@@ -5,7 +5,7 @@ title: Home
 
 # 🍳 Gabby’s Cookbook
 
-A collection of recipes written in [CookLang](https://cooklang.org)! :)
+A collection of recipes written in [CookLang](https://cooklang.org) :)
 
 ## Recipes
 <ul>
