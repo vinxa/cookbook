@@ -19,6 +19,23 @@
 {%- assign header_section = split_by_ingredients[0] -%}
 {%- assign ingredients_section = split_by_ingredients[1] | default: "" -%}
 
+<pre style="white-space: pre-wrap; background:#222; color:#0f0; padding:1rem;">
+RAW CONTENT:
+{{ page.content | escape }}
+
+SPLIT BY STEPS (0):
+{{ split_by_steps[0] | escape }}
+
+SPLIT BY STEPS (1):
+{{ split_by_steps[1] | escape }}
+
+INGREDIENTS SECTION:
+{{ ingredients_section | escape }}
+
+STEPS SECTION:
+{{ steps_section | escape }}
+</pre>
+
 
 
 
