@@ -4,19 +4,20 @@ template: default
 
 {%- assign raw_content = page.content -%}
 
-{%- assign split_by_steps = raw_content | split: '<h2 id="steps">' -%}
+{%- assign split_by_steps = raw_content | split: '<h2 id="steps">Steps</h2>' -%}
 {%- assign before_steps = split_by_steps[0] -%}
 {%- assign steps_section = split_by_steps[1] | default: '' -%}
 
-{%- assign split_by_cookware = before_steps | split: '<h2 id="cookware">' -%}
+{%- assign split_by_cookware = before_steps | split: '<h2 id="cookware">Cookware</h2>' -%}
 {%- assign before_cookware = split_by_cookware[0] -%}
 {%- assign cookware_section = split_by_cookware[1] | default: '' -%}
 
-{%- assign split_by_ingredients = before_cookware | split: '<h2 id="ingredients">' -%}
+{%- assign split_by_ingredients = before_cookware | split: '<h2 id="ingredients">Ingredients</h2>' -%}
 {%- assign header_section = split_by_ingredients[0] -%}
 {%- assign ingredients_section = split_by_ingredients[1] | default: '' -%}
 
-<!-- <pre style="white-space: pre-wrap; background:#222; color:#0f0; padding:1rem;">
+<!-- For debugging:
+<pre style="white-space: pre-wrap; background:#222; color:#0f0; padding:1rem;">
 RAW CONTENT:
 {{ page.content | escape }}
 
@@ -97,7 +98,18 @@ STEPS SECTION:
   text-align: center;
   font-weight: bold;
 }
+.home-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #a67c00;
+  text-decoration: none;
+}
+.home-link:hover {
+  text-decoration: underline;
+}
 </style>
+
+<a href="{{ '/' | relative_url }}" class="home-link">← Home</a>
 
 <article class="recipe-card">
   <div class="recipe-header">
@@ -117,7 +129,7 @@ STEPS SECTION:
     </div>
     {%- endif -%}
     
-    {%- if cookware_section -%}
+    {%- if cookware_section and cookware_section != '' -%}
     <div class="recipe-section">
       <h2>🧰 Cookware</h2>
       {{ cookware_section | markdownify }}
