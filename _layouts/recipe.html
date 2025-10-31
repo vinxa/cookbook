@@ -2,17 +2,9 @@
 layout: default
 ---
 
-{% assign parts = content | split: "## Cookware" %}
-{% if parts.size > 1 %}
-  {% assign before_cookware = parts[0] %}
-  {% assign after_cookware = parts[1] | split: "## Steps" %}
-  {% assign cookware_section = after_cookware[0] %}
-  {% assign steps_section = after_cookware[1] %}
-{% else %}
-  {% assign before_cookware = content | split: "## Steps" | first %}
-  {% assign cookware_section = "" %}
-  {% assign steps_section = content | split: "## Steps" | last %}
-{% endif %}
+{% assign parts = content | split: "## Steps" %}
+{% assign before_steps = parts[0] %}
+{% assign steps_section = parts[1] %}
 
 
 <style>
@@ -89,19 +81,22 @@ layout: default
   </div>
 
 <div class="recipe-sections">
-  <div class="recipe-section">
+    <div class="recipe-section">
     <h2>🥘 Ingredients</h2>
-    {{ before_cookware | markdownify }}
-  </div>
-  <div class="recipe-section">
-    <h2>🍳 Cookware</h2>
-    {{ cookware_section | markdownify }}
-  </div>
-</div>
+    {{ before_steps | markdownify }}
+    </div>
 
-<div class="recipe-steps">
-  <h2>👩‍🍳 Instructions</h2>
-  {{ steps_section | markdownify }}
+    {% if cookware_section != "" %}
+    <div class="recipe-section">
+        <h2>🍳 Cookware</h2>
+        {{ cookware_section | markdownify }}
+    </div>
+    {% endif %}
+
+    <div class="recipe-steps">
+    <h2>👩‍🍳 Instructions</h2>
+    {{ steps_section | markdownify }}
+    </div>
 </div>
 
 </article>

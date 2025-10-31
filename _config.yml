@@ -10,3 +10,4 @@ defaults:
       path: "_recipes_generated"
     values:
       layout: recipe
+footer: false
