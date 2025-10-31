@@ -1,0 +1,39 @@
+name: Generate recipes for GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "recipes/**/*.cook"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Markdown from .cook files
+        run: |
+          mkdir -p _recipes_generated
+          rm -f _recipes_generated/*.md
+          for f in recipes/*.cook; do
+            name=$(basename "$f" .cook)
+            out="_recipes_generated/$name.md"
+            {
+              echo "---"
+              echo "layout: recipe"
+              echo "title: ${name//_/ }"
+              echo "---"
+              echo ""
+              echo '```'
+              cat "$f"
+              echo '```'
+            } > "$out"
+          done
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git add _recipes_generated
+          git diff --cached --quiet || (git commit -m "Auto-generate markdown recipes" && git push)
