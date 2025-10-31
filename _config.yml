@@ -7,6 +7,6 @@ collections:
     output: true
 defaults:
   - scope:
-      path: "recipes"
+      path: "_recipes_generated"
     values:
       layout: recipe
