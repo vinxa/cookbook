@@ -33,5 +33,5 @@ the sides.
 5. Once golden underneath, flip the pancake over and cook for 1 further minute
 or until cooked through.
 
-6. Serve straightaway with your favourite topping.
+6. Serve straight away with your favourite topping.
 
