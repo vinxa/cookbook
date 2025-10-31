@@ -19,7 +19,7 @@ jobs:
         run: |
           mkdir -p _recipes_generated
           rm -f _recipes_generated/*.md
-          for f in recipes/*.cook; do
+          find recipes -type f -name '*.cook' | while read -r f; do
             name=$(basename "$f" .cook)
             out="_recipes_generated/$name.md"
             {
@@ -28,7 +28,7 @@ jobs:
               echo "title: ${name//_/ }"
               echo "---"
               echo ""
-              echo '```'
+              echo '```cooklang'
               cat "$f"
               echo '```'
             } > "$out"
