@@ -2,9 +2,11 @@
 layout: default
 ---
 
-{% assign parts = content | split: "## Steps" %}
+{% assign raw = page.content %}
+{% assign parts = raw | split: "## Steps" %}
 {% assign before_steps = parts[0] %}
 {% assign steps_section = parts[1] %}
+
 
 
 <style>
@@ -80,18 +82,11 @@ layout: default
     </div>
   </div>
 
-<div class="recipe-sections">
+  <div class="recipe-sections">
     <div class="recipe-section">
     <h2>🥘 Ingredients</h2>
     {{ before_steps | markdownify }}
     </div>
-
-    {% if cookware_section != "" %}
-    <div class="recipe-section">
-        <h2>🍳 Cookware</h2>
-        {{ cookware_section | markdownify }}
-    </div>
-    {% endif %}
 
     <div class="recipe-steps">
     <h2>👩‍🍳 Instructions</h2>
