@@ -3,15 +3,25 @@ layout: default
 ---
 
 {%- assign raw_content = page.content -%}
-{%- assign split_by_steps = raw_content | split: "## Steps" -%}
-{%- assign before_steps = split_by_steps[0] -%}
-{%- assign steps_section = split_by_steps[1] -%}
+{%- assign normalised = raw_content | replace: "##  ", "## " -%}
+{%- assign split_by_steps = normalised | split: "## Steps" -%}{%- assign before_steps = split_by_steps[0] -%}
+{%- assign steps_section = split_by_steps[1] | default: split_by_steps[0] -%}
 {%- assign split_by_cookware = before_steps | split: "## Cookware" -%}
 {%- assign before_cookware = split_by_cookware[0] -%}
-{%- assign cookware_section = split_by_cookware[1] -%}
+{%- assign cookware_section = split_by_cookware[1] | default: '' -%}
 {%- assign split_by_ingredients = before_cookware | split: "## Ingredients" -%}
 {%- assign header_section = split_by_ingredients[0] -%}
-{%- assign ingredients_section = split_by_ingredients[1] -%}
+{%- assign ingredients_section = split_by_ingredients[1] | default: before_cookware -%}
+
+{%- assign ing_lines = ingredients_section | split: "\n" -%}
+{%- assign filtered_ing = "" -%}
+{%- for line in ing_lines -%}
+  {%- if line | strip | slice: 0, 1 != '#' -%}
+    {%- assign filtered_ing = filtered_ing | append: line | append: "\n" -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign ingredients_section = filtered_ing -%}
+
 
 
 <style>
