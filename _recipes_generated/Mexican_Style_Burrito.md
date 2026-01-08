@@ -17,8 +17,8 @@ title: Mexican Style Burrito
 - *8 large* eggs
 - salt
 - black pepper
-- [Red Beans](Shared/Red Beans)
-- [Guacamole](Shared/Guacamole)
+- [Red Beans](./Shared/Red Beans)
+- [Guacamole](./Shared/Guacamole)
 - *200 ml* sour cream
 - *1 pinch* smoked paprika
 

@@ -9,7 +9,7 @@ title: Neapolitan Pizza
 ## Ingredients
 
 - semolina
-- *6 balls* [Pizza Dough](Shared/Pizza Dough)
+- *6 balls* [Pizza Dough](./Shared/Pizza Dough)
 - flour
 - semolina
 - *5 tbsp* San Marzano tomato sauce
